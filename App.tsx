@@ -87,50 +87,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-  },
-  itemStyle: {
-    padding: 10,
-    color: 'black',
-    fontSize:12,
-    flex:2,
-    fontWeight:'bold'
-  },
-  itemStyleCap: {
-    padding: 10,
-    color: 'black',
-    fontSize:12,
-    flex:4,
-    fontWeight:'bold',
-  },
-  itemStyleHeader: {
-    padding: 10,
-    color: 'black',
-    fontSize:12,
-    flex:2,
-    fontWeight:'bold',
-  },
-  itemStyleHeader1: {
-    padding: 10,
-    color: 'black',
-    fontSize:12,
-    flex:2,
-    fontWeight:'bold',
-  },
-  itemStyleHeader2: {
-    padding: 10,
-    color: 'black',
-    fontSize:12,
-    flex:4,
-    fontWeight:'bold',
-  },
-  textInputStyle: {
-    height: 40,
-    borderWidth: 1,
-    paddingLeft: 20,
-    margin: 5,
-    borderColor: '#009688',
-    backgroundColor: '#FFFFFF',
-  },
+  }
 });
 
 export default App;

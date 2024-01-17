@@ -67,16 +67,9 @@ function GraphComponent() {
                 scrollableDotStrokeColor: 'red',
                 scrollableDotRadius:20,
                 barRadius:10,
-                style: {
-                  borderRadius: 1,
-                },
-                propsForDots: {
-                  r: "1",
-                  strokeWidth: "1",
-                  stroke: "#ffffff",
-                  fill:'red'
-                },
+                
               }}
+              flatColor={true}
               useShadowColorFromDataset={false}
               fromZero={true}
               withCustomBarColorFromData={true}

@@ -29,29 +29,24 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import  HomeScreen from './components/pages/HomeScreen';
 import  RecentScreen from './components/pages/RecentScreen';
+import  Header from './components/Header';
 
 const Tab = createMaterialTopTabNavigator();
 
 const App = () => {
   const [bitCoinCap, setBitCoinCap] = useState("test");
 
-  function SettingsScreen() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Settings!</Text>
-      </View>
-    );
-  }
-  
   return (
     <GraphContext.Provider value ={{ bitCoinCap, setBitCoinCap }}>
     <NavigationContainer >
-    <View>
+    <Header name='' ></Header>
+    <View style={{backgroundColor:'#F1EFEF', padding:10, }}>
        <View style={styles.container}>
           <Text
-            style={{padding: 10,
+            style={{
               color: 'black',
               fontSize:22,
+              marginLeft:10,
               fontWeight:'bold'}}>
             Current Balance(USD)
           </Text>
@@ -71,11 +66,11 @@ const App = () => {
       
     <Tab.Navigator
         screenOptions={{
-        tabBarLabelStyle: { fontSize: 12 ,color:'black', fontWeight:'bold'},
-        tabBarStyle: { backgroundColor: 'powderblue' },
+        tabBarLabelStyle: { fontSize: 12 ,color:'black', fontWeight:'bold' },
+        tabBarStyle: { backgroundColor: 'white' },
         }}
         initialRouteName="Market"
-    >
+        >
         <Tab.Screen name="Market" component={HomeScreen} />
         <Tab.Screen name="Recent" component={RecentScreen} />
     </Tab.Navigator>
@@ -87,6 +82,9 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius:10,
+    padding:10
   }
 });
 

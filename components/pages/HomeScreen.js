@@ -16,7 +16,7 @@ import {
 import { GraphContext } from '../GraphContext';
 
 const HomeScreen = ({ navigation }) => {
-
+    var url= 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png';
     const { bitCoinCap, setBitCoinCap } = useContext(GraphContext);
     const [search, setSearch] = useState('');
     const [filteredDataSource, setFilteredDataSource] = useState([]);
@@ -73,26 +73,26 @@ const HomeScreen = ({ navigation }) => {
       setMasterDataSource(bitCoins);
     }, []);
   
+    let filterTimeout
     const searchFilterFunction = (text) => {
-      // Check if searched text is not blank
       if (text) {
-        // Inserted text is not blank
-        // Filter the masterDataSource
-        // Update FilteredDataSource
-        const newData = masterDataSource.filter(
-          function (item) {
-            const itemData = item.market
-              ? item.market.toUpperCase()
-              : ''.toUpperCase();
-            const textData = text.toUpperCase();
-            return itemData.indexOf(textData) > -1;
-        });
-        setFilteredDataSource(newData);
+        filterTimeout = setTimeout(() => {
+          console.log('====>', text)
+          const newData = masterDataSource.filter(
+            function (item) {
+              const itemData = item.market
+                ? item.market.toUpperCase()
+                : ''.toUpperCase();
+              const textData = text.toUpperCase();
+              return itemData.indexOf(textData) > -1;
+          });
+          setFilteredDataSource(newData);
+        }, 500)
         setSearch(text);
       } else {
-        // Inserted text is blank
-        // Update FilteredDataSource with masterDataSource
-        setFilteredDataSource(masterDataSource);
+        filterTimeout = setTimeout(() => {
+          setFilteredDataSource(masterDataSource);
+        }, 500)
         setSearch(text);
       }
     };
@@ -101,7 +101,7 @@ const HomeScreen = ({ navigation }) => {
       return (
         <TouchableOpacity onPress={() => getItem(item)}>
         <View style={{flex : 12, flexDirection : 'row', backgroundColor:'#FFFFFF' }}>
-        <Image style ={{flex:0.7, margin:10, height:20,width:20,}} source={{uri:'https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68'}}/>
+        <Image style ={{flex:0.7, margin:10, height:20,width:20,}} source={{uri:url}}/>
         <Text
           style={styles.itemStyle}
           >{item.market.toUpperCase()}
@@ -225,8 +225,13 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       paddingLeft: 20,
       margin: 5,
-      borderColor: '#009688',
+      borderColor: '#F1EFEF',
       backgroundColor: '#FFFFFF',
+      backgroundColor: 'white',
+      borderTopLeftRadius: 10,
+      borderTopRightRadius:10,
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius:10,
     },
   });
 
